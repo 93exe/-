@@ -4,7 +4,7 @@ on:
     inputs:
       horizon_ref:
         description: "ludovic111/horizon branch, tag or commit"
-        default: "main"
+        default: "59a1f51d346b5bbea210f48ebe4419fb19bdb370"
   push:
     branches: [main]
 
@@ -17,7 +17,7 @@ jobs:
 
       - name: Get Horizon and apply the Android patch
         run: |
-          git clone https://github.com/ludovic111/horizon horizon
+          git clone https://github.com/horizon-rust/horizon horizon
           git -C horizon checkout "${{ github.event.inputs.horizon_ref || 'main' }}"
           python3 rust/apply_patch.py horizon
 
